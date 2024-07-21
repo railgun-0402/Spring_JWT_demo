@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  postgre:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    container_name: zenn_postgre
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: zenn
+      POSTGRES_PASSWORD: zenn
+      POSTGRES_DB: zenn

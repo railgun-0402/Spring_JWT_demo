@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.volkruss.demo.domain.repository.user.UserRepository">
+    <!-- idには対応するメソッド名を記述します -->
+    <!-- select処理なのでselectタグで囲います -->
+    <select id="findByName" resultType="com.volkruss.demo.domain.dto.user.UserEntity"><!-- 正しく指定しないと起動時エラーになります -->
+        select * from users where name = #{name}
+    </select>
+</mapper>
