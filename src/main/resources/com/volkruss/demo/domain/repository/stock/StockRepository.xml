@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.volkruss.demo.domain.repository.stock.StockRepository">
+    <insert id="save" parameterType="com.volkruss.demo.domain.dto.stock.StockEntity">
+        <foreach item="stock" collection="stocks" separator=";">
+            insert into stocks (user_id, character_id)
+            select #{stock.user_id}, #{stock.character_id}
+            where not exists (select 1 from stocks where user_id = #{stock.user_id} and character_id = #{stock.character_id})
+        </foreach>
+    </insert>
+    <select id="getUserCharacters" resultType="com.volkruss.demo.domain.dto.character.CharacterEntity">
+        select characters.* from characters inner join stocks on characters.id = stocks.character_id where stocks.user_id = #{user_id}
+    </select>
+</mapper>
