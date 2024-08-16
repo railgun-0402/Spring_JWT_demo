@@ -1,0 +1,1 @@
+INSERT INTO "users" ("name", "password", "coin") VALUES ('zenn', 'zenn', '900');

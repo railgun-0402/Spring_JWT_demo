@@ -1,5 +1,6 @@
 package com.volkruss.demo.domain.model.user;
 
+import com.volkruss.demo.application.exception.coin.NotEnoughException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,7 +22,8 @@ public class User {
             // 使用したらコインがひかれる
             this.coin = this.coin.sub(pay);
         } else {
-            // TODO error
+            // error
+            throw new NotEnoughException();
         }
     }
 
