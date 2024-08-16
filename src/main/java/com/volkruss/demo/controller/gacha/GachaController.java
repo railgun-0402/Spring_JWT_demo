@@ -40,7 +40,7 @@ public class GachaController {
      * CharacterをCharacterOutに変換します。
      */
     public static class CharacterMapper {
-        static CharacterOut toOut(Character character) {
+        public static CharacterOut toOut(Character character) {
             return CharacterOut.by(character.getName());
         }
     }
