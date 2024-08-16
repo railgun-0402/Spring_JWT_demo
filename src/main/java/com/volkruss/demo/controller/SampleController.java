@@ -3,7 +3,7 @@ package com.volkruss.demo.controller;
 import com.volkruss.demo.ResultObject;
 import com.volkruss.demo.SampleForm;
 import com.volkruss.demo.domain.dto.user.UserEntity;
-import com.volkruss.demo.domain.model.User;
+import com.volkruss.demo.domain.model.user.User;
 import com.volkruss.demo.domain.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -28,5 +28,10 @@ public class SampleController {
     public User get() {
         UserEntity userEntity = this.userRepository.findByName("zenn");
         return userEntity.toUser();
+    }
+
+    @GetMapping("/api/test")
+    public String test() {
+        return "認証成功してます";
     }
 }

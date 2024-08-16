@@ -1,6 +1,7 @@
 package com.volkruss.demo.domain.dto.user;
 
-import com.volkruss.demo.domain.model.User;
+import com.volkruss.demo.domain.model.user.Coin;
+import com.volkruss.demo.domain.model.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +17,6 @@ public class UserEntity {
     private int coin;
 
     public User toUser() {
-        return new User(name, coin);
+        return new User(id, name, new Coin(coin));
     }
 }
