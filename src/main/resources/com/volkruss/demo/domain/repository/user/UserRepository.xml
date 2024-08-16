@@ -6,4 +6,8 @@
     <select id="findByName" resultType="com.volkruss.demo.domain.dto.user.UserEntity"><!-- 正しく指定しないと起動時エラーになります -->
         select * from users where name = #{name}
     </select>
+
+    <update id="updateCoin">
+        update users set coin = #{coin} where name = #{name}
+    </update>
 </mapper>

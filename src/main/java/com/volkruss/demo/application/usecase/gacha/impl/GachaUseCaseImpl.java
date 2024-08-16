@@ -4,6 +4,7 @@ import com.volkruss.demo.application.usecase.gacha.GachaUseCase;
 import com.volkruss.demo.domain.model.character.Character;
 import com.volkruss.demo.domain.model.gacha.Gacha;
 import com.volkruss.demo.domain.model.user.User;
+import com.volkruss.demo.domain.model.user.UserMapper;
 import com.volkruss.demo.domain.repository.character.CharacterRepository;
 import com.volkruss.demo.domain.repository.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,9 @@ public class GachaUseCaseImpl implements GachaUseCase {
 
     @Autowired
     private CharacterRepository characterRepository;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Override
     public List<Character> getCharacters() {
@@ -37,7 +41,9 @@ public class GachaUseCaseImpl implements GachaUseCase {
 
         // ガチャの利用（キャラクターをランダム3人取得）
         List<Character> characterList = gacha.play();
-        // TODO ユーザー情報の更新
+        // ユーザー情報の更新
+        this.userRepository.updateCoin(this.userMapper.toEntity(user));
+
         return characterList;
     }
 }
